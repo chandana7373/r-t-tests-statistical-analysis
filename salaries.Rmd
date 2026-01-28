@@ -1,0 +1,35 @@
+---
+title: "module 4 R"
+output: word_document
+date: "2024-03-21"
+---
+
+install.packages("MASS")
+library(MASS)
+
+data <- read.csv("C:/Users/yalav/OneDrive/Documents/module 4 R/Salaries.csv")
+
+male_salaries <- data$salary[data$sex == "Male"]
+female_salaries <- data$salary[data$sex == "Female"]
+
+t_test_result <- t.test(male_salaries, female_salaries, var.equal = FALSE)
+
+print(t_test_result)
+
+
+# Before and after workshop sleep quality scores
+before <- c(4.6, 7.8, 9.1, 5.6, 6.9, 8.5, 5.3, 7.1, 3.2, 4.4)
+after <- c(6.6, 7.7, 9.0, 6.2, 7.8, 8.3, 5.9, 6.5, 5.8, 4.9)
+
+# Perform two-sample t-test
+t_test <- t.test(before, after, alternative = "less", paired = FALSE)
+
+# Print the results
+print(t_test)
+
+# Perform two-sample t-test with α = 0.1
+t_test_alpha_01 <- t.test(before, after, alternative = "less", paired = FALSE, conf.level = 0.9)
+
+# Print the results
+print(t_test_alpha_01)
+
